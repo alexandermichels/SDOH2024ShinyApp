@@ -2,6 +2,8 @@
 
 Dashboard for the SDOH 2024 Fellowship. WIP
 
+A journal article explaining the machine learning approach and analysis is forthcoming.
+
 
 Basic layout:
 
