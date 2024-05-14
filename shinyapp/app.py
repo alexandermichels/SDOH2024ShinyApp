@@ -37,34 +37,8 @@ with ui.nav_panel("Speed Differences"):
     ui.markdown("The map and histograms below demonstrate the difference between OSM speed limits (with [osmnx](https://osmnx.readthedocs.io/en/stable/user-reference.html#osmnx.routing.add_edge_speeds) used to impute missing data) on road segments and the average travel speeds on each road segment. These actual travel speeds were used to train an ML model to predict travel speeds for all road segments in Cincinatti.")
     @render.ui
     def map_diffs():
-        return ui.tags.iframe(src=f"/www/SpeedDiff.html", width="100%", height="75%")
+        return ui.tags.iframe(src=f"www/SpeedDiff.html", width="100%", height="75%")
 
-    # @render_widget
-    # def hist():
-    #     return px.histogram(diffs, "diff_mph")
-    
-# with ui.nav_panel("Difference in Access"):
-#     ui.markdown("Differences in access are calculated as the access measuring using OSM minus the access measured using ML predicted travel times. Thus, positive values are areas where OSM over-estimated access relative to ML predicted and negative values are locations where OSM under-estimated access relative to OSM. For an explanation of the various measures, see the About page.")
-#     ui.input_selectize(
-#         "access_col",
-#         "Choose an access measure:",
-#         {
-#             # 'diff_fca_30_BEDS': "FCA 30",
-#             'diff_fca_60_BEDS': "FCA 60",
-#             # 'diff_2sfca_30_BEDS': "2SFCA 30",
-#             'diff_2sfca_60_BEDS': "2SFCA 60",
-#             # 'diff_e2sfca_30_BEDS': "E2SFCA 30",
-#             'diff_e2sfca_60_BEDS': "E2SFCA 60",
-#             # 'diff_g2sfca10_BEDS': "G2SFCA 10",
-#             'diff_g2sfca20_BEDS': "G2SFCA 20",
-#             'diff_3sfca_BEDS': "3SFCA",
-#             # 'diff_raam30_BEDS': "RAAM 30",
-#             'diff_raam60_BEDS': "RAAM 60"
-#         }
-#     )
-#     @render.ui
-#     def map_diff_access():
-#         return ui.tags.iframe(src=f"/www/Diff-{input.access_col()}.html", width="100%", height="75%")
 
 
 with ui.nav_panel("% Difference in Access"):
@@ -90,4 +64,4 @@ with ui.nav_panel("% Difference in Access"):
     )
     @render.ui
     def map_pdiff_access():
-        return ui.tags.iframe(src=f"/www/Perc-{input.access_col_perc()}.html", width="100%", height="75%")
+        return ui.tags.iframe(src=f"www/Perc-{input.access_col_perc()}.html", width="100%", height="75%")
