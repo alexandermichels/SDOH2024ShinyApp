@@ -15,6 +15,7 @@ html_dir.mkdir(exist_ok=True)
 
 
 diffs = gpd.read_feather(app_dir / "data/Diffs.feather")
+diffs["diff_mph"] = diffs["diff_mph"].round(2)
 m = diffs.explore(column="diff_mph", legend=True, cmap="RdBu", vmax=15, vmin=-15,  tiles=tiles_provider)
 m.save(html_dir / "SpeedDiff.html")
 
@@ -60,7 +61,7 @@ pmeasure_dict = {
 
 for k, v in pmeasure_dict.items():
     tmp = access[["GEOID", k, "geometry"]]
-    tmp[v] = tmp[k]
+    tmp[v] = tmp[k].round(2)
     tmp = tmp.drop(columns=[k])
     m = tmp.explore(column=v, legend=True, cmap="RdBu", tiles=tiles_provider,  tooltip=['GEOID', v], vmin=-15, vmax=15)
     m.save(html_dir / f"Perc-{k}.html")

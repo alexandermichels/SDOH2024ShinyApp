@@ -37,7 +37,7 @@ with ui.nav_panel("Speed Differences"):
     ui.markdown("The map and histograms below demonstrate the difference between OSM speed limits (with [osmnx](https://osmnx.readthedocs.io/en/stable/user-reference.html#osmnx.routing.add_edge_speeds) used to impute missing data) on road segments and the average travel speeds on each road segment. These actual travel speeds were used to train an ML model to predict travel speeds for all road segments in Cincinatti.")
     @render.ui
     def map_diffs():
-        return ui.tags.iframe(src=f"www/SpeedDiff.html", width="100%", height="75%")
+        return ui.tags.iframe(src=f"www/SpeedDiff.html", width="100%", height="85%")
 
 
 
@@ -64,4 +64,4 @@ with ui.nav_panel("% Difference in Access"):
     )
     @render.ui
     def map_pdiff_access():
-        return ui.tags.iframe(src=f"www/Perc-{input.access_col_perc()}.html", width="100%", height="75%")
+        return ui.tags.iframe(src=f"www/Perc-{input.access_col_perc()}.html", width="100%", height="85%")
