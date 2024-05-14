@@ -1,7 +1,2 @@
 shiny 
-shinywidgets
-shinyswatch
-# plotly
-# geopandas
-# faicons
 requests

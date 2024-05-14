@@ -1,8 +1,5 @@
-import plotly.express as px
 from shared import app_dir
 from shiny.express import app_opts, input, render, ui
-from shinyswatch import theme
-from shinywidgets import render_widget
 
 
 # tiles used for maps
@@ -10,7 +7,6 @@ tiles_provider = "CartoDB PositronNoLabels"
 
 # just theming and titles
 ui.page_opts(title="Access using ML", fillable=True)
-theme.lux()
 
 # required to get it to serve static files
 app_opts(static_assets={"/www": str(app_dir / 'www')})
