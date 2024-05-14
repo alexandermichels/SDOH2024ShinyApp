@@ -1,15 +1,13 @@
-from shared import app_dir
 from shiny.express import app_opts, input, render, ui
+from pathlib import Path
 
-
-# tiles used for maps
-tiles_provider = "CartoDB PositronNoLabels"
+app_dir = Path(__file__).parent
 
 # just theming and titles
 ui.page_opts(title="Access using ML", fillable=True)
 
 # required to get it to serve static files
-app_opts(static_assets={"/www": str(app_dir / 'www')})
+# app_opts(static_assets={"/www": str(app_dir / 'www')})
 
 
 with ui.nav_panel("About"):
