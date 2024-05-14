@@ -3,5 +3,5 @@ shinywidgets
 shinyswatch
 # plotly
 # geopandas
-faicons
+# faicons
 requests
