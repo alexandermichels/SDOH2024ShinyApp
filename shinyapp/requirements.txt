@@ -1,6 +1,7 @@
 shiny 
 shinywidgets
-ipyleaflet
-geopy
+shinyswatch
+# plotly
+# geopandas
 faicons
 requests

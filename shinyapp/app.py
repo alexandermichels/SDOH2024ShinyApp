@@ -1,7 +1,5 @@
-from branca.colormap import linear
-import numpy as np
 import plotly.express as px
-from shared import app_dir, diffs
+from shared import app_dir
 from shiny.express import app_opts, input, render, ui
 from shinyswatch import theme
 from shinywidgets import render_widget
@@ -15,8 +13,7 @@ ui.page_opts(title="Access using ML", fillable=True)
 theme.lux()
 
 # required to get it to serve static files
-app_opts(static_assets={ "/maps" : "html" })
-
+app_opts(static_assets={"/www": str(app_dir / 'www')})
 
 
 with ui.nav_panel("About"):
@@ -46,11 +43,11 @@ with ui.nav_panel("Speed Differences"):
     ui.markdown("The map and histograms below demonstrate the difference between OSM speed limits (with [osmnx](https://osmnx.readthedocs.io/en/stable/user-reference.html#osmnx.routing.add_edge_speeds) used to impute missing data) on road segments and the average travel speeds on each road segment. These actual travel speeds were used to train an ML model to predict travel speeds for all road segments in Cincinatti.")
     @render.ui
     def map_diffs():
-        return ui.tags.iframe(src=f"/maps/SpeedDiff.html", width="100%", height="75%")
+        return ui.tags.iframe(src=f"/www/SpeedDiff.html", width="100%", height="75%")
 
-    @render_widget
-    def hist():
-        return px.histogram(diffs, "diff_mph")
+    # @render_widget
+    # def hist():
+    #     return px.histogram(diffs, "diff_mph")
     
 with ui.nav_panel("Difference in Access"):
     ui.markdown("Differences in access are calculated as the access measuring using OSM minus the access measured using ML predicted travel times. Thus, positive values are areas where OSM over-estimated access relative to ML predicted and negative values are locations where OSM under-estimated access relative to OSM. For an explanation of the various measures, see the About page.")
@@ -73,7 +70,7 @@ with ui.nav_panel("Difference in Access"):
     )
     @render.ui
     def map_diff_access():
-        return ui.tags.iframe(src=f"/maps/Diff-{input.access_col()}.html", width="100%", height="75%")
+        return ui.tags.iframe(src=f"/www/Diff-{input.access_col()}.html", width="100%", height="75%")
 
 
 with ui.nav_panel("% Difference in Access"):
@@ -99,4 +96,4 @@ with ui.nav_panel("% Difference in Access"):
     )
     @render.ui
     def map_pdiff_access():
-        return ui.tags.iframe(src=f"/maps/Perc-{input.access_col_perc()}.html", width="100%", height="75%")
+        return ui.tags.iframe(src=f"/www/Perc-{input.access_col_perc()}.html", width="100%", height="75%")
