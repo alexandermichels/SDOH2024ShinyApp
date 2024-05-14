@@ -7,7 +7,7 @@ app_dir = Path(__file__).parent
 ui.page_opts(title="Access using ML", fillable=True)
 
 # required to get it to serve static files
-# app_opts(static_assets={"/www": str(app_dir / 'www')})
+app_opts(static_assets={"/www": str(app_dir / 'www')})
 
 
 with ui.nav_panel("About"):
